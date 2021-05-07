@@ -7,7 +7,9 @@ div.container
                        placeholder='create poetry'
                        autofocus)
     hr.divider
-    p.syllable-count(:class='syllableDisplayClasses') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
+    p.syllable-count(:class='syllableDisplayClasses') 
+      span(v-if='syllableCount > 0') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
+      span(v-else) start typing
 
   div.container-footer
     Button.submit(type='text', @click='handleSubmit', :disabled='!validInput')
@@ -30,7 +32,6 @@ export default {
     syllableDisplayClasses: () -> {
       'valid': this.validInput
       'invalid': this.syllableCount > 7
-      'hidden': this.syllableCount <= 0
     }
 
   methods:
