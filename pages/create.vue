@@ -1,7 +1,11 @@
 <template lang='pug'>
 div.container
   div.container-content
-    Input.phrase-input(v-model='phraseInput', ref='phraseInput', placeholder='create poetry', autofocus)
+    input.phrase-input(ref='phraseInput'
+                       :value='phraseInput'
+                       @input='e => phraseInput = e.target.value'
+                       placeholder='create poetry'
+                       autofocus)
     hr.divider
     p.syllable-count(:class='syllableDisplayClasses') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
 
@@ -67,20 +71,21 @@ export default {
 
 .phrase-input
   width: 100%
+  height: 2rem
 
-  .ivu-input
-    height: 2rem
+  text-align: center
+  color: $body-color
+  font-size: 1.5rem
+  font-weight: 400
 
-    text-align: center
-    color: $body-color
-    font-size: 1.5rem
-    font-weight: 400
+  background: none
+  outline: none 
+  box-shadow: none
+  border: none
+  border-radius: 0
 
-    background: none
-    outline: none 
-    box-shadow: none
-    border: none
-    border-radius: 0
+  &::placeholder
+    color: $subtitle-color
 
 .divider
   width: 3rem
