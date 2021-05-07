@@ -28,12 +28,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/reset',
-    'view-design/dist/styles/iview.css'
+    'view-design/dist/styles/iview.css',
+    '~/assets/theme'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/view-design'
+    '~/plugins/view-design',
+    '~/plugins/helpers'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -4,8 +4,10 @@ div#app
 </template>
 
 <style lang='sass'>
+@import '~assets/theme'
+
 html
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+  font-family: $font-family
   font-size: 16px
   word-spacing: 1px
   -ms-text-size-adjust: 100%
@@ -21,6 +23,8 @@ html
 
   height: 100vh
   width: 100vw
+
+  background-color: $background-color
 
   overflow-x: hidden
   overflow-y: scroll
