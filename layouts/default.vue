@@ -6,7 +6,7 @@ div#app
 <style lang='sass'>
 @import '~assets/theme'
 
-html
+html, body
   font-family: $font-family
   font-size: 16px
   word-spacing: 1px

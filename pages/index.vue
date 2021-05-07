@@ -41,7 +41,7 @@ export default {
     text-align: center
     color: $body-color
     font-size: 1.5rem
-    font-weight: 500
+    font-weight: 400
 
     background: none
     outline: none 
@@ -52,15 +52,15 @@ export default {
 .divider
   width: 8rem
   height: 2px
-  margin: 0.5rem 0
+  margin: 0.5rem 0 0.65rem
 
   background-color: $body-color
   border: none
 
 .syllable-count
-
   font-size: 1rem
   font-weight: 500
+  font-style: italic
   color: $subtitle-color
 
   transition: color 500ms, opacity 500ms
