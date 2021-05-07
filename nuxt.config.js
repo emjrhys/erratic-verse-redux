@@ -22,8 +22,6 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500&display=swap' }
     ],
     script: [
-      { src: '/__/firebase/8.5.0/firebase-app.js', body: true },
-      { src: '/__/firebase/init.js', body: true }
     ]
   },
 
@@ -36,6 +34,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/firebase',
     '~/plugins/view-design',
     '~/plugins/feather-icons',
     '~/plugins/helpers'

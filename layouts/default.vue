@@ -1,6 +1,10 @@
 <template lang='pug'>
 div#app
-  Nuxt
+  div#nav
+    nuxt-link(to='/') haiku
+    nuxt-link(to='/create') submit
+  div#content
+    Nuxt
 </template>
 
 <style lang='sass'>
@@ -18,7 +22,7 @@ html, body
 
 #app
   display: flex
-  justify-content: center
+  flex-direction: column
   align-items: center
 
   height: 100vh
@@ -28,4 +32,7 @@ html, body
 
   overflow-x: hidden
   overflow-y: scroll
+
+#content
+  flex: 1
 </style>
