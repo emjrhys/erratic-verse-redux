@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'erratic verse',
+    title: 'unstable verse',
     htmlAttrs: {
       lang: 'en'
     },
