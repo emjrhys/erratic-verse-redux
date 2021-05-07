@@ -1,6 +1,6 @@
 <template lang='pug'>
 div.container
-  Input.phrase-input(v-model='phraseInput', placeholder='create poetry', autofocus)
+  Input.phrase-input(v-model='phraseInput', ref='phraseInput', placeholder='create poetry', autofocus)
   hr.divider
   p.syllable-count(:class='syllableDisplayClasses') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
 
@@ -39,6 +39,9 @@ export default {
       })
 
       this.phraseInput = null
+  
+  mounted: () ->
+    this.$nextTick(() => this.$refs.phraseInput.focus())
 }
 </script>
 

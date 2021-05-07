@@ -56,6 +56,12 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
+  // Router configuration
+  router: {
+    linkActiveClass: 'navbar-item-active',
+    linkExactActiveClass: 'navbar-item-active'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel:{

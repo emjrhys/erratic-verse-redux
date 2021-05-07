@@ -1,11 +1,18 @@
 <template lang='pug'>
 div#app
-  div#nav
-    nuxt-link(to='/') haiku
-    nuxt-link(to='/create') submit
+  Navbar
+
   div#content
     Nuxt
 </template>
+
+<script lang='coffee'>
+import Navbar from '~/components/Navbar'
+
+export default {
+  components: { Navbar }
+}
+</script>
 
 <style lang='sass'>
 @import '~assets/theme'
@@ -30,9 +37,12 @@ html, body
 
   background-color: $background-color
 
-  overflow-x: hidden
-  overflow-y: scroll
+  overflow: hidden
+
+#nav
+
 
 #content
   flex: 1
+  overflow: auto
 </style>
