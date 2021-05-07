@@ -11,7 +11,7 @@ div.container
       span(v-if='syllableCount > 0') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
       span(v-else) start typing
 
-  div.container-footer(data-role='header', data-position='fixed', data-tap-toggle='false')
+  div.container-footer
     Button.submit(type='text', @click='handleSubmit', :disabled='!validInput')
       fIcon(type='check', :size='20')
       | submit

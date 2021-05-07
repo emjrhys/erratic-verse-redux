@@ -6,7 +6,7 @@ div.container
       p.haiku-phrase(:class='{ hidden: animationStage < 2 }') {{ selectedPhrases[1] }}
       p.haiku-phrase(:class='{ hidden: animationStage < 3 }') {{ selectedPhrases[2] }}
 
-  div.container-footer(data-role='header', data-position='fixed', data-tap-toggle='false')
+  div.container-footer
     Button.generate-button(:class='{ hidden: animationStage < 4 }', type='text', @click='generateHaiku') another one
 </template>
 
