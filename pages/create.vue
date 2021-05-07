@@ -28,6 +28,8 @@ export default {
     }
 
   methods:
+    focusInput: () -> this.$nextTick(() => this.$refs.phraseInput.focus())
+
     handleSubmit: () -> 
       return if !this.validInput
 
@@ -38,10 +40,16 @@ export default {
         syllables: this.syllableCount
       })
 
+      this.$Notice.open({
+        title: 'phrase submitted'
+        desc: this.phraseInput
+        duration: 3
+      })
+
       this.phraseInput = null
+      this.focusInput()
   
-  mounted: () ->
-    this.$nextTick(() => this.$refs.phraseInput.focus())
+  mounted: () -> this.focusInput()
 }
 </script>
 
@@ -66,7 +74,7 @@ export default {
     border-radius: 0
 
 .divider
-  width: 8rem
+  width: 3rem
   height: 2px
   margin: 0.5rem 0 0.65rem
 
@@ -97,17 +105,16 @@ export default {
   font-weight: 500
   color: $body-color
 
-  transition: opacity 500ms, color 250ms
+  transition: opacity 500ms, color 500ms
 
   &:disabled
     background: none !important
-    color: $body-color
-    opacity: 0
+    color: $subtitle-color
 
     pointer-events: none
 
   &:hover
-    color: $green
+    color: $accent-color
     background: none
 
   &:focus

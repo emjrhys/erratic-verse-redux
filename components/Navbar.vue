@@ -20,6 +20,8 @@ div.navbar
     font-weight: 500
     color: $subtitle-color
 
+    transition: color 500ms
+
     &-active, &:hover
       color: $body-color
 

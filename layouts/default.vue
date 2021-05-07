@@ -39,10 +39,8 @@ html, body
 
   overflow: hidden
 
-#nav
-
-
 #content
+  width: 100%
   flex: 1
   overflow: auto
 </style>
