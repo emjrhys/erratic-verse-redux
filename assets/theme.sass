@@ -32,6 +32,25 @@ $red: #E07A5F
     .feather
       margin-right: 0.25rem
 
+  &-text
+    font-size: 1rem
+    color: $body-color
+
+    transition: opacity 500ms, color 500ms
+
+    &:disabled
+      background: none !important
+      color: $subtitle-color
+
+      pointer-events: none
+
+    &:hover
+      color: $accent-color
+      background: none
+
+    &:focus
+      box-shadow: none
+
 .ivu-notice-notice
   color: $body-color
   box-shadow: none

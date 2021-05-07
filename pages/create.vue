@@ -49,7 +49,14 @@ export default {
       this.phraseInput = null
       this.focusInput()
   
-  mounted: () -> this.focusInput()
+  mounted: () -> 
+    ref = firebase.database().ref('phrases')
+    ref.once('value', (snapshot) => 
+      snapshot.forEach((child) => 
+        console.log(child.key, child.val())
+      )
+    )
+    this.focusInput()
 }
 </script>
 
@@ -100,23 +107,5 @@ export default {
 
 .submit
   margin-top: 2rem
-
-  font-size: 1rem
   font-weight: 500
-  color: $body-color
-
-  transition: opacity 500ms, color 500ms
-
-  &:disabled
-    background: none !important
-    color: $subtitle-color
-
-    pointer-events: none
-
-  &:hover
-    color: $accent-color
-    background: none
-
-  &:focus
-    box-shadow: none
 </style>
