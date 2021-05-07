@@ -1,12 +1,14 @@
 <template lang='pug'>
 div.container
-  Input.phrase-input(v-model='phraseInput', ref='phraseInput', placeholder='create poetry', autofocus)
-  hr.divider
-  p.syllable-count(:class='syllableDisplayClasses') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
+  div.container-content
+    Input.phrase-input(v-model='phraseInput', ref='phraseInput', placeholder='create poetry', autofocus)
+    hr.divider
+    p.syllable-count(:class='syllableDisplayClasses') {{ syllableCount }} {{ pluralize(syllableCount, 'syllable') }}
 
-  Button.submit(type='text', @click='handleSubmit', :disabled='!validInput')
-    fIcon(type='check', :size='20')
-    | submit
+  div.container-footer
+    Button.submit(type='text', @click='handleSubmit', :disabled='!validInput')
+      fIcon(type='check', :size='20')
+      | submit
 </template>
 
 <script lang='coffee'>
@@ -104,8 +106,4 @@ export default {
 
   &.invalid
     color: $red
-
-.submit
-  margin-top: 2rem
-  font-weight: 500
 </style>

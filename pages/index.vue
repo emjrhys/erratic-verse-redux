@@ -1,11 +1,13 @@
 <template lang='pug'>
 div.container
-  div.haiku(v-if='selectedPhrases')
-    p(ref='line1') {{ selectedPhrases[0] }}
-    p(ref='line2') {{ selectedPhrases[1] }}
-    p(ref='line3') {{ selectedPhrases[2] }}
+  div.container-content
+    div.haiku(v-if='selectedPhrases')
+      p.haiku-phrase(:class='{ hidden: animationStage < 1 }') {{ selectedPhrases[0] }}
+      p.haiku-phrase(:class='{ hidden: animationStage < 2 }') {{ selectedPhrases[1] }}
+      p.haiku-phrase(:class='{ hidden: animationStage < 3 }') {{ selectedPhrases[2] }}
 
-  Button.generate-button(ref='generateButton', type='text', @click='generateHaiku') another one
+  div.container-footer
+    Button.generate-button(:class='{ hidden: animationStage < 4 }', type='text', @click='generateHaiku') another one
 </template>
 
 <script lang='coffee'>
@@ -16,6 +18,7 @@ export default {
   data: () ->
     phrases: null
     selectedPhrases: null
+    animationStage: 0
 
   computed:
     fiveSyllablePhrases: () -> if this.phrases then this.phrases.filter((e) -> e.syllables == 5).map((e) -> e.text) else null
@@ -23,10 +26,23 @@ export default {
 
   methods:
     generateHaiku: () -> 
+      this.animationStage = 0
+      await this.sleep(500)
       fives = this.getRandomFromArray(this.fiveSyllablePhrases, 2)
       seven = this.getRandomFromArray(this.sevenSyllablePhrases)
 
       this.selectedPhrases = [fives[0], seven[0], fives[1]]
+      this.animateHaiku()
+
+    animateHaiku: () ->
+      await this.sleep(500)
+      this.animationStage = 1
+      await this.sleep(1500)
+      this.animationStage = 2
+      await this.sleep(1500)
+      this.animationStage = 3
+      await this.sleep(2000)
+      this.animationStage = 4
 
   mounted: () -> 
     ref = firebase.database().ref('phrases')
@@ -38,13 +54,16 @@ export default {
 <style lang='sass'>
 @import '~assets/theme'
 
-.container
-  padding-bottom: 3rem
+.haiku
+  font-size: 2rem
+  font-weight: 200
 
-  .haiku
-    font-size: 2rem
-    font-weight: 200
+  &-phrase
+    transition: opacity 500ms
 
-  .generate-button
-    margin-top: 2rem
+.generate-button
+  transition: opacity 500ms
+
+.hidden
+  opacity: 0
 </style>
