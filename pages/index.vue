@@ -26,13 +26,15 @@ export default {
 
   methods:
     generateHaiku: () -> 
-      this.animationStage = 0
-      await this.sleep(500)
+      if this.animationStage != 0
+        this.animationStage = 0
+        await this.sleep(1000)
+
       fives = this.getRandomFromArray(this.fiveSyllablePhrases, 2)
       seven = this.getRandomFromArray(this.sevenSyllablePhrases)
 
       this.selectedPhrases = [fives[0], seven[0], fives[1]]
-      this.animateHaiku()
+      this.$nextTick(() => this.animateHaiku())
 
     animateHaiku: () ->
       await this.sleep(500)
@@ -54,15 +56,17 @@ export default {
 <style lang='sass'>
 @import '~assets/theme'
 
+$transition-duration: 1000ms
+
 .haiku
   font-size: 1.5rem
   font-weight: 200
 
   &-phrase
-    transition: opacity 500ms
+    transition: opacity $transition-duration
 
 .generate-button
-  transition: opacity 500ms
+  transition: opacity $transition-duration
 
 .hidden
   opacity: 0
