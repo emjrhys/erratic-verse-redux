@@ -18,7 +18,7 @@ export const getRandomFromArray = (arr, n = 1) => {
     taken[x] = --len in taken ? taken[len] : len
   }
 
-  return result
+  return result.length === 1 ? result[0] : result
 }
 
 export const sleep = (ms) => {

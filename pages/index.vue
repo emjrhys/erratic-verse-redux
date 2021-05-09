@@ -32,7 +32,7 @@ export default {
       fives = this.getRandomFromArray(this.fiveSyllablePhrases, 2)
       seven = this.getRandomFromArray(this.sevenSyllablePhrases)
 
-      this.selectedPhrases = [fives[0], seven[0], fives[1]]
+      this.selectedPhrases = [fives[0], seven, fives[1]]
       this.$nextTick(() => this.animateHaiku())
 
     randomizeLine: (line) -> 
@@ -45,7 +45,7 @@ export default {
       newLine = this.selectedPhrases[line]
       while (this.selectedPhrases.includes(newLine))
         newLine = if line == 1 then this.getRandomFromArray(this.sevenSyllablePhrases) else this.getRandomFromArray(this.fiveSyllablePhrases)
-      this.selectedPhrases[line] = newLine[0]
+      this.selectedPhrases[line] = newLine
 
       this.$set(this.animationState, line, true)
 
@@ -74,7 +74,6 @@ $transition-duration: 1000ms
 .haiku
   font-size: 1.5rem
   font-weight: 200
-  transition: width 200ms
 
   &-phrase
     transition: opacity $transition-duration
@@ -85,4 +84,5 @@ $transition-duration: 1000ms
 
 .hidden
   opacity: 0
+  transition: opacity 500ms
 </style>
